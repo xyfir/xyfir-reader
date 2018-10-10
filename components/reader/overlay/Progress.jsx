@@ -1,5 +1,4 @@
 import { Slider } from 'react-md';
-import PropTypes from 'prop-types';
 import React from 'react';
 
 export default class ReaderProgressSlider extends React.Component {
@@ -46,7 +45,7 @@ export default class ReaderProgressSlider extends React.Component {
   }
 }
 
-ReaderProgressSlider.propTypes = {
-  show: PropTypes.bool.isRequired,
-  Reader: PropTypes.object.isRequired
-};
+// ReaderProgressSlider.propTypes = {
+//   show: PropTypes.bool.isRequired,
+//   Reader: PropTypes.object.isRequired
+// };

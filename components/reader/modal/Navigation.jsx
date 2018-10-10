@@ -1,5 +1,4 @@
 import { Toolbar, Button, Drawer } from 'react-md';
-import PropTypes from 'prop-types';
 import React from 'react';
 
 export default class ReaderModalNavigation extends React.Component {
@@ -88,14 +87,14 @@ export default class ReaderModalNavigation extends React.Component {
   }
 }
 
-ReaderModalNavigation.propTypes = {
-  Modal: PropTypes.object.isRequired,
-  title: PropTypes.string.isRequired,
-  Reader: PropTypes.object.isRequired,
-  actions: PropTypes.arrayOf(PropTypes.element),
-  noSizing: PropTypes.bool,
-  drawerItems: PropTypes.arrayOf(PropTypes.element)
-};
+// ReaderModalNavigation.propTypes = {
+//   Modal: PropTypes.object.isRequired,
+//   title: PropTypes.string.isRequired,
+//   Reader: PropTypes.object.isRequired,
+//   actions: PropTypes.arrayOf(PropTypes.element),
+//   noSizing: PropTypes.bool,
+//   drawerItems: PropTypes.arrayOf(PropTypes.element)
+// };
 
 ReaderModalNavigation.defaultProps = {
   actions: [],
