@@ -54,55 +54,6 @@ span.reader-dialog.container {
     width: 100%;
   }
 
-  div.create-note.form {
-    margin: 0.5em 1em;
-
-    > div.highlight {
-      > div.visible-text {
-        max-height: 12em;
-        overflow: auto;
-      }
-
-      > div.control-container {
-        display: flex;
-        align-items: center;
-
-        > div.md-slider-container {
-          flex: 1;
-          margin: 0 0.2em;
-        }
-      }
-    }
-
-    > div.md-text-field-container {
-      width: 100%;
-    }
-  }
-
-  section.note {
-    text-align: left;
-
-    > div {
-      margin: 0.5em 1em;
-    }
-
-    > div.highlights {
-      > span {
-        font-style: italic;
-        font-size: 90%;
-        display: block;
-        color: #666;
-
-        &:before,
-        &:after {
-          font-style: normal;
-          content: '"';
-          color: black;
-        }
-      }
-    }
-  }
-
   section.manage-annotations.container {
     text-align: left;
   }

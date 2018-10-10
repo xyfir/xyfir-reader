@@ -59,65 +59,6 @@ ul.recently-opened.books {
   }
 }
 
-div.manage-book {
-  > section.cover {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-
-    > div.dropzone {
-      width: initial;
-      display: inline-block;
-      margin-bottom: 0.5em;
-
-      > img.cover {
-        height: 19.2em;
-        width: 12em;
-      }
-    }
-
-    div {
-      margin: auto;
-    }
-  }
-}
-
-.edit-books {
-  input[type='text'] {
-    width: 25em;
-    max-width: 90%;
-  }
-
-  input[type='date'] {
-    font-size: 1em;
-    margin: 1em 0em;
-  }
-
-  input {
-    font-size: 85%;
-  }
-
-  .comments-edit {
-    width: 60%;
-    height: 15em;
-    font-size: 100%;
-  }
-
-  div.comments {
-    width: 70%;
-    margin: auto;
-    background-color: $llgray;
-    padding: 0.5em;
-    border-radius: 0.3em;
-    margin-bottom: 1em;
-  }
-
-  span.checkbox {
-    display: block;
-    margin: 1em;
-  }
-}
-
 ul.list-compact {
   width: 50%;
   margin: auto;
