@@ -1,25 +1,22 @@
 const CompressionPlugin = require('compression-webpack-plugin');
 const webpack = require('webpack');
-const CONFIG = require('./config');
+const CONFIG = require('./constants/config');
 const path = require('path');
 
-const PROD = CONFIG.environment.type == 'production';
+const PROD = CONFIG.ENVIRONMENT == 'production';
 
 module.exports = {
-  mode: CONFIG.environment.type,
+  mode: CONFIG.ENVIRONMENT,
 
-  entry: './client/components/App.jsx',
+  entry: './components/App.jsx',
 
   output: {
     filename: 'App.js',
-    path: path.resolve(__dirname, 'static/js')
+    path: path.resolve(__dirname, 'dist')
   },
 
   resolve: {
-    modules: [path.resolve(__dirname, 'client'), 'node_modules'],
-    alias: {
-      server: __dirname
-    },
+    modules: [__dirname, 'node_modules'],
     extensions: ['.js', '.jsx']
   },
 
@@ -29,11 +26,11 @@ module.exports = {
         test: /\.jsx?$/,
         loader: 'babel-loader',
         include: [
-          path.resolve(__dirname, 'client/actions'),
-          path.resolve(__dirname, 'client/components'),
-          path.resolve(__dirname, 'client/constants'),
-          path.resolve(__dirname, 'client/lib'),
-          path.resolve(__dirname, 'client/reducers')
+          path.resolve(__dirname, 'actions'),
+          path.resolve(__dirname, 'components'),
+          path.resolve(__dirname, 'constants'),
+          path.resolve(__dirname, 'lib'),
+          path.resolve(__dirname, 'reducers')
         ],
         exclude: /node_modules/,
         options: {
@@ -61,7 +58,7 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: JSON.stringify(CONFIG.environment.type)
+        NODE_ENV: JSON.stringify(CONFIG.ENVIRONMENT)
       }
     }),
     PROD ? new CompressionPlugin({ filename: '[path].gz' }) : null
