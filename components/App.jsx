@@ -50,8 +50,6 @@ class App extends React.Component {
     // Update state.view when url hash changes
     // Update state according to url hash
     window.onhashchange = () => updateView(store);
-
-    setTimeout(() => this._loadAd(), 120000);
   }
 
   async componentWillMount() {
