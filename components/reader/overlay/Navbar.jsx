@@ -1,14 +1,4 @@
-import {
-  Subheader,
-  ListItem,
-  Toolbar,
-  Divider,
-  Button,
-  Drawer,
-  List,
-  FontIcon
-} from 'react-md';
-import request from 'superagent';
+import { ListItem, Toolbar, Button, Drawer, FontIcon } from 'react-md';
 import React from 'react';
 
 // Constants
@@ -66,19 +56,7 @@ export default class ReaderNavbar extends React.Component {
 
     Reader._updateBook({ bookmarks });
 
-    request
-      .put(
-        `${XYLIBRARY_URL}/libraries/${App.state.account.library}` +
-          `/books/${Reader.state.book.id}/metadata`
-      )
-      .send({
-        xyfir: {
-          bookmarks: JSON.stringify(bookmarks)
-        }
-      })
-      .end((err, res) => {
-        if (err || res.body.error) console.error('onBookmark()', err, res);
-      });
+    // ** save bookmarks
   }
 
   /**

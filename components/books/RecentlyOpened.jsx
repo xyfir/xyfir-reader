@@ -1,9 +1,6 @@
 import { FontIcon } from 'react-md';
 import React from 'react';
 
-// Components
-import NoBooks from 'components/books/NoBooks';
-
 // Modules
 import loadCovers from 'lib/books/load-covers';
 import sortBooks from 'lib/books/sort';
@@ -26,8 +23,6 @@ export default class RecentlyOpened extends React.Component {
 
   render() {
     const { App } = this.props;
-
-    if (!App.state.books.length) return <NoBooks {...this.props} />;
 
     return (
       <ul className="recently-opened books">

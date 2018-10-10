@@ -2,7 +2,6 @@ import React from 'react';
 
 // Components
 import Pagination from 'components/misc/Pagination';
-import NoBooks from 'components/books/NoBooks';
 
 // Modules
 import findMatches from 'lib/books/find-matching';
@@ -33,8 +32,6 @@ export default class GridList extends React.Component {
 
   render() {
     const { App } = this.props;
-
-    if (!App.state.books.length) return <NoBooks {...this.props} />;
 
     let books = sortBooks(
       findMatches(App.state.books, App.state.search.query),

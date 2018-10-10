@@ -11,7 +11,6 @@ import BookStyling from 'components/reader/modal/BookStyling';
 import Bookmarks from 'components/reader/modal/Bookmarks';
 import BookInfo from 'components/reader/modal/BookInfo';
 import Filters from 'components/reader/modal/Filters';
-import Notes from 'components/reader/modal/notes/Notes';
 
 const IGNORE = {
   ignore: true,
@@ -56,8 +55,6 @@ export default class ReaderModal extends React.Component {
           return <Filters {...props} />;
         case 'search':
           return <SearchBookContent {...props} />;
-        case 'notes':
-          return <Notes {...props} />;
         case 'toc':
           return <TableOfContents {...props} />;
         default:

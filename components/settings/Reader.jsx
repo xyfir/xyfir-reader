@@ -1,9 +1,7 @@
 import { SelectField, TextField, Button, Paper } from 'react-md';
-import request from 'superagent';
 import React from 'react';
 
 // Constants
-import { XYANNOTATIONS_URL, XYBOOKS_URL } from 'constants/config';
 import { FONTS, ALIGNMENTS } from 'constants/reader/styles';
 import initialState from 'constants/initial-state';
 import * as themes from 'constants/reader/themes';
@@ -50,17 +48,6 @@ export default class ReaderSettings extends React.Component {
     }
   }
 
-  onRequestSubscription() {
-    if (!navigator.onLine)
-      return this.props.App._alert('Internet connectivity required');
-
-    location.href =
-      `${XYANNOTATIONS_URL}/account/subscription/request?redirect=` +
-      encodeURIComponent(
-        `${XYBOOKS_URL}/app/#/settings/reader?subscriptionKey=SUBSCRIPTION_KEY`
-      );
-  }
-
   /** @param {string} theme */
   onSetTheme(theme) {
     this._theme = theme.toLowerCase();
@@ -90,17 +77,8 @@ export default class ReaderSettings extends React.Component {
   onSaveKey() {
     const xyAnnotationsKey = this._annotationsKey.value;
     const { App } = this.props;
-
-    request
-      .put(`${XYBOOKS_URL}/api/account`)
-      .send({ xyAnnotationsKey })
-      .end((err, res) => {
-        if (err || res.body.error) return App._alert('Could not save changes');
-
-        App.store.dispatch(setXyAnnotationsKey(xyAnnotationsKey));
-        App._alert('xyAnnotations subscription key set');
-        App.store.dispatch(save(['config']));
-      });
+    App.store.dispatch(setXyAnnotationsKey(xyAnnotationsKey));
+    App.store.dispatch(save(['config']));
   }
 
   render() {
@@ -311,8 +289,9 @@ export default class ReaderSettings extends React.Component {
             xyAnnotations subscriptions can be purchased directly through{' '}
             <OpenWindow href="https://annotations.xyfir.com/">
               xyAnnotations
-            </OpenWindow>, or through certain other reader applications that
-            support xyAnnotations.
+            </OpenWindow>
+            , or through certain other reader applications that support
+            xyAnnotations.
             <br />
             New xyBooks accounts are automatically given a free one-month
             subscription.
@@ -334,24 +313,6 @@ export default class ReaderSettings extends React.Component {
             onClick={() => this.onSaveKey()}
           >
             Save
-          </Button>
-
-          <p>
-            If you have already purchased a subscription through xyAnnotations,
-            you can easily have xyBooks request access to your subscription key
-            using the button below.
-            <br />
-            You will be redirected to xyAnnotations where you'll login, allow
-            the request, and then you'll be brought back here.
-          </p>
-
-          <Button
-            secondary
-            raised
-            iconChildren="navigate_next"
-            onClick={() => this.onRequestSubscription()}
-          >
-            Request Access
           </Button>
         </Paper>
       </div>

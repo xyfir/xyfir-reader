@@ -1,6 +1,5 @@
 import { Button } from 'react-md';
 import Dropzone from 'react-dropzone';
-import request from 'superagent';
 import React from 'react';
 
 // Modules
