@@ -2,9 +2,6 @@ import { Button } from 'react-md';
 import Dropzone from 'react-dropzone';
 import React from 'react';
 
-// Modules
-import loadBooksFromApi from 'lib/books/load-from-api';
-
 // Constants
 import { XYLIBRARY_URL } from 'constants/config';
 
@@ -51,8 +48,7 @@ export default class UploadBooks extends React.Component {
 
         App._alert('Book(s) uploaded successfully');
 
-        // Reload state.books from API
-        loadBooksFromApi(App.state.account.library, App.store.dispatch);
+        // ** save book
       });
     } catch (err) {
       App._alert(err.toString());
