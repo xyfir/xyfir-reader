@@ -61,7 +61,6 @@ class App extends React.Component {
 
     // Pull data from local storage
     state.loading = false;
-    state.account = (await localforage.getItem('account')) || state.account;
     state.config = (await localforage.getItem('config')) || state.config;
     state.books = (await localforage.getItem('books')) || state.books;
 

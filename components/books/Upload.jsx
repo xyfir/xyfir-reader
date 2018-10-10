@@ -2,9 +2,6 @@ import { Button } from 'react-md';
 import Dropzone from 'react-dropzone';
 import React from 'react';
 
-// Constants
-import { XYLIBRARY_URL } from 'constants/config';
-
 export default class UploadBooks extends React.Component {
   constructor(props) {
     super(props);
@@ -20,36 +17,12 @@ export default class UploadBooks extends React.Component {
     const { App } = this.props;
 
     try {
-      if (!navigator.onLine) throw 'This action requires internet connectivity';
-
       if (this.state.uploading) return;
       else this.setState({ uploading: true });
 
-      // Determine space needed on storage server
-      const bytes = files.reduce((a, f) => a + f.size);
-
-      if (bytes > 500000001 || files.length > 20)
-        throw 'Limit 20 files and 500mb total';
-
-      // Upload files
-      const req = request.post(
-        `${XYLIBRARY_URL}/libraries/${App.state.account.library}/books`
-      );
-
-      files.forEach(file => req.attach('book', file));
-
-      req.end((err, res) => {
-        this.setState({ uploading: false });
-
-        if (err || res.body.error) {
-          console.error('<UploadBooks>', err, '-', res);
-          return App._alert('Could not upload file(s)');
-        }
-
-        App._alert('Book(s) uploaded successfully');
-
-        // ** save book
-      });
+      this.setState({ uploading: false });
+      App._alert('Book(s) uploaded successfully');
+      // ** save book
     } catch (err) {
       App._alert(err.toString());
       this.setState({ uploading: false });

@@ -37,14 +37,6 @@ export default class AppNavigation extends React.Component {
   }
 
   /**
-   * Delete access token and redirect to logout.
-   */
-  onLogout() {
-    delete localStorage.accessToken;
-    location.href = `${XYBOOKS_URL}/api/account/logout`;
-  }
-
-  /**
    * Return elements for each book list group.
    * @return {JSX.Element[]}
    */
@@ -212,10 +204,7 @@ export default class AppNavigation extends React.Component {
               iconChildren="home"
             />
           ]}
-          title={
-            'xyBooks' +
-            (Date.now() > App.state.account.subscription ? ' (free)' : '')
-          }
+          title="xyBooks"
           nav={
             <Button
               icon

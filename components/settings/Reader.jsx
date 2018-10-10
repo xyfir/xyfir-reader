@@ -8,7 +8,6 @@ import * as themes from 'constants/reader/themes';
 
 // Action creators
 import { setReader, setGeneral } from 'actions/settings';
-import { setXyAnnotationsKey } from 'actions/account';
 import { save } from 'actions/app';
 
 // Components
@@ -57,8 +56,6 @@ export default class ReaderSettings extends React.Component {
   onSaveStyles() {
     const { App } = this.props;
 
-    if (Date.now() > App.state.account.subscription) return;
-
     App.store.dispatch(setReader(this.state));
 
     if (App.state.config.general.matchThemes && this._theme) {
@@ -82,16 +79,8 @@ export default class ReaderSettings extends React.Component {
   }
 
   render() {
-    const { account } = this.props.App.state;
-
     return (
       <div className="reader-settings">
-        {Date.now() > account.subscription ? (
-          <p>
-            Free users cannot use global reader themes or set custom styling.
-          </p>
-        ) : null}
-
         <Paper zDepth={1} component="section" className="theme section flex">
           <h3>Styling</h3>
 
@@ -291,9 +280,6 @@ export default class ReaderSettings extends React.Component {
             </OpenWindow>
             , or through certain other reader applications that support
             xyAnnotations.
-            <br />
-            New xyBooks accounts are automatically given a free one-month
-            subscription.
           </p>
 
           <TextField
@@ -302,7 +288,7 @@ export default class ReaderSettings extends React.Component {
             type="text"
             label="Subscription Key"
             className="md-cell"
-            defaultValue={account.xyAnnotationsKey}
+            defaultValue={'xyAnnotationsKey'}
           />
 
           <Button

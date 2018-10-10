@@ -45,7 +45,7 @@ export default class GeneralSettings extends React.Component {
   }
 
   render() {
-    const { config, account } = this.props.App.state;
+    const { config } = this.props.App.state;
 
     return (
       <div className="general-settings">
@@ -54,7 +54,6 @@ export default class GeneralSettings extends React.Component {
             id="select--theme"
             ref={i => (this._theme = i)}
             label="Theme"
-            disabled={Date.now() > account.subscription}
             menuItems={[
               { label: 'Light', value: 'light' },
               { label: 'Dark', value: 'dark' }
