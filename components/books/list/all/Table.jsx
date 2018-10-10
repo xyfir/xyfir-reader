@@ -239,39 +239,6 @@ export default class TableList extends React.Component {
             onClick={() => this.onDelete()}
           />
 
-          {selected.length > 1 ? (
-            <Button
-              icon
-              secondary
-              tooltipPosition="bottom"
-              tooltipLabel={`Edit (${selected.length}) books`}
-              iconChildren="edit"
-              onClick={() =>
-                (location.hash = `#/books/bulk-edit/${selected.join(',')}`)
-              }
-            />
-          ) : (
-            <Button
-              icon
-              secondary
-              tooltipPosition="bottom"
-              tooltipLabel="Edit book"
-              iconChildren="edit"
-              onClick={() => (location.hash = `#/books/manage/${book.url}`)}
-            />
-          )}
-
-          {selected.length == 1 ? (
-            <Button
-              icon
-              secondary
-              tooltipPosition="bottom"
-              tooltipLabel="Add new formats to book"
-              iconChildren="add_box"
-              onClick={() => (location.hash = `#/books/add-format/${book.url}`)}
-            />
-          ) : null}
-
           {selected.length == 1 ? (
             <Button
               icon
@@ -409,27 +376,7 @@ export default class TableList extends React.Component {
             </span>
           </span>
 
-          <span className="field formats">
-            <span className="name">Formats</span>
-            <span className="links">
-              {book.formats.map((format, i) => (
-                <OpenWindow
-                  href={
-                    `${XYLIBRARY_URL}/files/` +
-                    `${this.props.App.state.account.library}/${format}`
-                  }
-                  key={i}
-                >
-                  {format
-                    .split('.')
-                    .slice(-1)[0]
-                    .toUpperCase()}
-                </OpenWindow>
-              ))}
-            </span>
-          </span>
-
-          <span className="field formats">
+          <span className="field">
             <span className="name">Tags</span>
             <span className="links">
               {book.tags.map(tag => (

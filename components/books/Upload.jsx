@@ -80,14 +80,7 @@ export default class UploadBooks extends React.Component {
           automatically be extracted from the ebook files. Each book's metadata
           can be viewed and modified after upload.
         </p>
-        <p>Any format can be uploaded and managed. Only EPUB can be read.</p>
-        <p>
-          You can also upload books by sending emails to{' '}
-          <a href="mailto:upload-books@xyfir.com">upload-books@xyfir.com</a>{' '}
-          with ebook files attached. Books will only be uploaded to your account
-          if the email is sent from the email address that is linked to your
-          xyBooks account. You may upload up to 25MB worth of ebooks per email.
-        </p>
+        <p>Only EPUB books can be read.</p>
 
         <Button
           primary

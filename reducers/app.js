@@ -1,6 +1,5 @@
 // Reducers
 import settings from 'reducers/settings';
-import account from 'reducers/account';
 import books from 'reducers/books';
 
 import * as types from 'constants/actions/app';
@@ -38,7 +37,6 @@ export default function(state, action) {
         return {};
       } else {
         return {
-          account: account(state.account, action),
           config: settings(state.config, action),
           search: state.search,
           books: books(state.books, action),

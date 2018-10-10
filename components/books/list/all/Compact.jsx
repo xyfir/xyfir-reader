@@ -97,11 +97,6 @@ export default class CompactList extends React.Component {
                       onClick={e => this.onListItemClick(e, b, 'read')}
                     />,
                     <ListItem
-                      primaryText="Metadata"
-                      leftIcon={<FontIcon>edit</FontIcon>}
-                      onClick={e => this.onListItemClick(e, b, 'manage')}
-                    />,
-                    <ListItem
                       primaryText="Search author(s)"
                       leftIcon={<FontIcon>person</FontIcon>}
                       onClick={e => this.onListItemClick(e, b, 'authors')}

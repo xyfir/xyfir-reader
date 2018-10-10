@@ -34,14 +34,5 @@ export default {
     query: '',
     page: 1
   },
-  account: {
-    uid: 0,
-    email: '',
-    subscription: 0,
-    library: '',
-    librarySizeLimit: 1,
-    referral: {},
-    xyAnnotationsKey: ''
-  },
   loading: true
 };

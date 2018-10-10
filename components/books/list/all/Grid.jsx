@@ -62,13 +62,6 @@ export default class GridList extends React.Component {
                   </Button>
                   <Button
                     flat
-                    onClick={() => (location.hash = buildUrl(b, 'manage'))}
-                    iconChildren="edit"
-                  >
-                    Metadata
-                  </Button>
-                  <Button
-                    flat
                     onClick={() => (location.hash = buildUrl(b, 'authors'))}
                     iconChildren="person"
                   >

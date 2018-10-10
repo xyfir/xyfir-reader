@@ -1,12 +1,4 @@
-import {
-  ListItem,
-  Toolbar,
-  Divider,
-  Drawer,
-  Button,
-  List,
-  FontIcon
-} from 'react-md';
+import { ListItem, Toolbar, Divider, Drawer, Button, FontIcon } from 'react-md';
 import React from 'react';
 
 // Constants
@@ -171,51 +163,22 @@ export default class AppNavigation extends React.Component {
       />,
 
       <ListItem
-        leftIcon={<FontIcon>account_circle</FontIcon>}
-        primaryText="Account"
-        nestedItems={[
-          <a href="#/library/info">
-            <ListItem
-              leftIcon={<FontIcon>library_books</FontIcon>}
-              primaryText="Manage Library"
-            />
-          </a>,
-          !window.cordova ? (
-            <a href="#/account">
-              <ListItem
-                leftIcon={<FontIcon>account_box</FontIcon>}
-                primaryText="My Account"
-              />
-            </a>
-          ) : (
-            <a />
-          ),
-          <a onClick={() => this.onLogout()}>
-            <ListItem
-              leftIcon={<FontIcon>close</FontIcon>}
-              primaryText="Logout"
-            />
-          </a>
-        ]}
-      />,
-
-      <ListItem
         leftIcon={<FontIcon>info</FontIcon>}
         primaryText="Documentation"
         nestedItems={[
-          <OpenWindow href={`${XYDOCUMENTATION_URL}/xyfir-books/help`}>
+          <OpenWindow href={`${XYDOCUMENTATION_URL}/xyfir-reader/help`}>
             <ListItem
               leftIcon={<FontIcon>help</FontIcon>}
               primaryText="Help Docs"
             />
           </OpenWindow>,
-          <OpenWindow href={`${XYDOCUMENTATION_URL}/xyfir-books/privacy`}>
+          <OpenWindow href={`${XYDOCUMENTATION_URL}/xyfir-reader/privacy`}>
             <ListItem
               leftIcon={<FontIcon>security</FontIcon>}
               primaryText="Privacy Policy"
             />
           </OpenWindow>,
-          <OpenWindow href={`${XYDOCUMENTATION_URL}/xyfir-books/tos`}>
+          <OpenWindow href={`${XYDOCUMENTATION_URL}/xyfir-reader/tos`}>
             <ListItem
               leftIcon={<FontIcon>gavel</FontIcon>}
               primaryText="Terms of Service"

@@ -51,13 +51,7 @@ class App extends React.Component {
 
     // Update state.view when url hash changes
     // Update state according to url hash
-    window.onhashchange = () => {
-      // Force old hash route format to new one
-      // `#${route}` -> `#/${route}`
-      if (location.hash.indexOf('#/') != 0)
-        return (location.hash = '#/' + location.hash.substr(1));
-      updateView(store);
-    };
+    window.onhashchange = () => updateView(store);
 
     setTimeout(() => this._loadAd(), 120000);
   }
