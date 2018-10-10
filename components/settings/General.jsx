@@ -79,12 +79,8 @@ export default class GeneralSettings extends React.Component {
         </Paper>
 
         <Paper zDepth={1} component="section" className="storage section flex">
-          <h2>Clear Local Storage</h2>
-          <p>
-            Frees up space on your local device. This data will still be
-            available in the cloud and will be redownloaded and saved locally
-            when you access it.
-          </p>
+          <h2>Reset App</h2>
+          <p>Wipes everything stored in the app.</p>
 
           <Button
             secondary
@@ -92,7 +88,7 @@ export default class GeneralSettings extends React.Component {
             iconChildren="clear"
             onClick={() => this.onClear()}
           >
-            Clear
+            Reset
           </Button>
         </Paper>
       </div>
