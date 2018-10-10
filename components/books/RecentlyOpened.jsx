@@ -12,13 +12,11 @@ export default class RecentlyOpened extends React.Component {
   }
 
   componentDidMount() {
-    const { books, account } = this.props.App.state;
-    loadCovers(books, account.library);
+    loadCovers();
   }
 
   componentDidUpdate() {
-    const { books, account } = this.props.App.state;
-    loadCovers(books, account.library);
+    loadCovers();
   }
 
   render() {

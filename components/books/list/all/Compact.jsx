@@ -18,13 +18,11 @@ export default class CompactList extends React.Component {
   }
 
   componentDidMount() {
-    const { books, account } = this.props.App.state;
-    loadCovers(books, account.library);
+    loadCovers();
   }
 
   componentDidUpdate() {
-    const { books, account } = this.props.App.state;
-    loadCovers(books, account.library);
+    loadCovers();
   }
 
   onCountWords(event, book) {
