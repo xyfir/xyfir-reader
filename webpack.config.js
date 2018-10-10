@@ -1,6 +1,7 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
 const CONFIG = require('./constants/config');
 const path = require('path');
 
@@ -9,7 +10,7 @@ const PROD = CONFIG.ENVIRONMENT == 'production';
 module.exports = {
   mode: CONFIG.ENVIRONMENT,
 
-  entry: './components/App.jsx',
+  entry: './lib/index.js',
 
   output: {
     publicPath: '/dist/',
@@ -92,11 +93,21 @@ module.exports = {
       minify: PROD,
       template: 'template.html'
     }),
-    PROD ? new CompressionPlugin({ filename: '[path].gz' }) : null
+    PROD ? new CompressionPlugin({ filename: '[path].gz' }) : null,
+    PROD ? null : new webpack.HotModuleReplacementPlugin()
   ].filter(p => p !== null),
+
+  devtool: 'inline-source-map',
 
   watchOptions: {
     aggregateTimeout: 500,
     ignored: ['node_modules', 'dist']
+  },
+
+  devServer: {
+    historyApiFallback: true,
+    contentBase: path.join(__dirname, 'dist'),
+    port: 2080,
+    hot: true
   }
 };
