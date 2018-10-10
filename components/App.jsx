@@ -1,7 +1,5 @@
-import 'styles/app.scss';
-
 import localForage from 'localforage';
-import { render } from 'react-dom';
+import { hot } from 'react-hot-loader';
 import React from 'react';
 
 // Components
@@ -125,4 +123,4 @@ class App extends React.Component {
   }
 }
 
-render(<App />, document.getElementById('content'));
+export default hot(module)(App);
