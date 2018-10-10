@@ -393,7 +393,7 @@ export default class TableList extends React.Component {
           <Divider />
 
           <div
-            className="markdown-body comments"
+            className="comments"
             dangerouslySetInnerHTML={{ __html: book.comments }}
           />
         </div>

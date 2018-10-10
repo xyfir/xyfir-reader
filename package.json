@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node server",
+    "start": "webpack-dev-server",
     "watch": "webpack-cli --watch",
     "build": "webpack-cli"
   },
@@ -19,7 +19,6 @@
     "copyr": "^1.0.5",
     "epubjs": "^0.3.72",
     "escape-string-regexp": "^1.0.5",
-    "github-markdown-css": "^2.10.0",
     "jszip": "^3.1.5",
     "localforage": "^1.7.2",
     "marked": "^0.5.1",
@@ -46,6 +45,7 @@
     "node-sass": "^4.9.3",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
-    "webpack": "^4.20.2"
+    "webpack": "^4.20.2",
+    "webpack-dev-server": "^3.1.9"
   }
 }

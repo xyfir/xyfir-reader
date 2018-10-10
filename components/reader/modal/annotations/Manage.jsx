@@ -164,7 +164,7 @@ export default class ManageAnnotations extends React.Component {
           </ul>
 
           <div
-            className="markdown-body summary"
+            className="summary"
             dangerouslySetInnerHTML={{
               __html: marked(set.description || '', { sanitize: true })
             }}
