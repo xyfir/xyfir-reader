@@ -202,7 +202,7 @@ export default class ReaderSettings extends React.Component {
 
           <ColorPicker
             id="highlight-color"
-            label="Highlight / Notes Color"
+            label="Highlight Color"
             value={this.state.highlightColor}
             onChange={v => this.setState({ highlightColor: v })}
           />
@@ -248,7 +248,6 @@ export default class ReaderSettings extends React.Component {
             onChange={v => this.setState({ defaultHighlightMode: v })}
             menuItems={[
               { label: 'None', value: 'none' },
-              { label: 'Notes', value: 'notes' },
               { label: 'Annotations', value: 'annotations' }
             ]}
             className="md-cell"

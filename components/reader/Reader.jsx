@@ -13,7 +13,6 @@ import Modal from 'components/reader/modal/Modal';
 // Modules
 import updateAnnotations from 'lib/reader/annotations/update';
 import highlightSearch from 'lib/reader/highlight/search';
-import highlightNotes from 'lib/reader/highlight/notes';
 import swipeListener from 'lib/reader/listeners/swipe';
 import clickListener from 'lib/reader/listeners/click';
 import openWindow from 'lib/util/open-window';
@@ -217,12 +216,8 @@ export default class Reader extends React.Component {
       highlight ||
       (() => {
         switch (this.state.highlight.mode) {
-          // none -> notes
+          // none -> first annotation set OR none
           case 'none':
-            return { mode: 'notes' };
-
-          // notes -> first annotation set OR none
-          case 'notes':
             if (
               !this.state.book.annotations ||
               !this.state.book.annotations.length
@@ -247,8 +242,6 @@ export default class Reader extends React.Component {
       switch (highlight.mode) {
         case 'none':
           return 'Highlights turned off';
-        case 'notes':
-          return 'Highlighting notes';
         case 'search':
           return 'Highlighting search matches';
         case 'annotations':
@@ -355,7 +348,7 @@ export default class Reader extends React.Component {
    * @param {MessageEvent} event
    * @param {object} event.data
    * @param {boolean} event.data.xy
-   * @param {string} event.data.type - `"note|annotation|search"`
+   * @param {string} event.data.type - `"annotation|search"`
    * @param {string} event.data.key
    */
   onHighlightClicked(event) {
@@ -386,7 +379,7 @@ export default class Reader extends React.Component {
         modal: {
           closeWait: Date.now() + 100,
           target: event.data.key,
-          show: event.data.type == 'note' ? 'notes' : 'search'
+          show: 'search'
         }
       });
     }
@@ -439,11 +432,6 @@ export default class Reader extends React.Component {
       },
       'span.xy-search': {
         'background-color': styles.searchMatchColor,
-        'font-size': 'inherit !important',
-        cursor: 'pointer'
-      },
-      'span.xy-note': {
-        'background-color': styles.highlightColor,
         'font-size': 'inherit !important',
         cursor: 'pointer'
       }
@@ -503,7 +491,7 @@ export default class Reader extends React.Component {
     });
 
     // Apply styles
-    // Insert annotations / highlight notes
+    // Insert annotations
     // Add swipe and click listeners
     this.book.rendition.on('rendered', (section, view) => {
       this._applyStyles();
@@ -527,12 +515,11 @@ export default class Reader extends React.Component {
    * @param {HighlightMode} highlight
    */
   _applyHighlights(highlight) {
-    const { notes, annotations } = this.state.book;
+    const { annotations } = this.state.book;
     const [{ document }] = this.book.rendition.getContents();
 
     // Reset HTML if needed
     switch (highlight.previousMode) {
-      case 'notes':
       case 'search':
       case 'annotations':
         document.body.innerHTML = this.oghtml;
@@ -541,9 +528,7 @@ export default class Reader extends React.Component {
     this.oghtml = document.body.innerHTML;
 
     // Apply appropriate highlights
-    if (highlight.mode == 'notes') {
-      highlightNotes(this.book, notes);
-    } else if (highlight.mode == 'search') {
+    if (highlight.mode == 'search') {
       highlightSearch(this.book, highlight.search);
     } else if (
       highlight.mode == 'annotations' &&
