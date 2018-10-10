@@ -1,0 +1,61 @@
+body.theme-dark {
+  color: #ccc;
+
+  .md-paper.section {
+    background-color: $md-grey-800;
+  }
+
+  ul > li.book:hover {
+    background-color: #3f3f46;
+  }
+
+  ul.list-grid > li.book > div.overlay {
+    background-color: rgba(0, 0, 0, 0.85);
+  }
+
+  span.chip {
+    background-color: #252526;
+  }
+
+  div.dropzone {
+    background-color: $md-grey-800;
+
+    &:hover {
+      background-color: #3f3f46;
+    }
+  }
+
+  .edit-books div.comments,
+  .manage-book div.comments {
+    background-color: #3f3f46;
+  }
+
+  .markdown-body {
+    color: #ddd;
+
+    code {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: #d7ba7d;
+    }
+
+    pre,
+    pre > code {
+      background-color: #252526;
+    }
+
+    td,
+    th {
+      background-color: #252526;
+    }
+  }
+
+  span.reader-dialog.container {
+    section.book-content-search > ul.matches > li.match:hover {
+      background-color: $md-grey-700;
+    }
+
+    section.manage-annotations.find div.discover li.set:hover {
+      background-color: $md-grey-700;
+    }
+  }
+}

@@ -1,0 +1,281 @@
+div.reader {
+  height: 100vh;
+  width: 100vw;
+
+  > div.overlay {
+    > div.toolbar {
+      opacity: 0.97;
+
+      > header {
+        transition: 0.3s;
+
+        &.hide {
+          transform: translate(0, -125%);
+        }
+      }
+    }
+
+    > span.status {
+      position: fixed;
+      font-size: 70%;
+      bottom: 0%;
+      left: 0%;
+      right: 0%;
+      color: $gray;
+    }
+
+    > div.progress-slider {
+      left: 0;
+      right: 0;
+      bottom: 0;
+      opacity: 0.97;
+      padding: 0em 1em;
+      position: fixed;
+      transition: 0.3s;
+
+      &.hide {
+        transform: translate(0, 100%);
+      }
+
+      .md-slider-track-fill {
+        background: white;
+      }
+
+      .md-slider-thumb--on {
+        background: white;
+      }
+    }
+  }
+}
+
+span.reader-dialog.container {
+  &.no-fullscreen > div.md-dialog--centered {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  div.create-note.form {
+    margin: 0.5em 1em;
+
+    > div.highlight {
+      > div.visible-text {
+        max-height: 12em;
+        overflow: auto;
+      }
+
+      > div.control-container {
+        display: flex;
+        align-items: center;
+
+        > div.md-slider-container {
+          flex: 1;
+          margin: 0 0.2em;
+        }
+      }
+    }
+
+    > div.md-text-field-container {
+      width: 100%;
+    }
+  }
+
+  section.note {
+    text-align: left;
+
+    > div {
+      margin: 0.5em 1em;
+    }
+
+    > div.highlights {
+      > span {
+        font-style: italic;
+        font-size: 90%;
+        display: block;
+        color: #666;
+
+        &:before,
+        &:after {
+          font-style: normal;
+          content: '"';
+          color: black;
+        }
+      }
+    }
+  }
+
+  section.manage-annotations.container {
+    text-align: left;
+  }
+
+  section.manage-annotations.find {
+    div.discover {
+      > div.md-text-field-container {
+        width: 100%;
+      }
+
+      > ul.sets {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+
+        > li.set {
+          display: table;
+          margin: 1em 0;
+          cursor: pointer;
+
+          &:hover {
+            background-color: $md-grey-50;
+          }
+
+          > * {
+            display: table-row;
+          }
+
+          > span.title {
+            font-weight: bold;
+            font-size: 125%;
+            color: $md-primary-color;
+          }
+
+          > span.book > span {
+            font-weight: bold;
+            color: $md-secondary-color;
+          }
+
+          > span.summary {
+            font-size: 85%;
+          }
+        }
+      }
+    }
+  }
+
+  section.manage-annotations.view-set {
+    text-align: left;
+
+    > div.set {
+      padding: 0.5em;
+
+      > h2.title {
+        color: $md-primary-color;
+      }
+
+      li.book > span {
+        color: $md-secondary-color;
+        font-weight: bold;
+      }
+    }
+  }
+
+  section.book-info {
+    > table {
+      margin: 0.5em 1em;
+      width: calc(100% - 2em);
+
+      th,
+      td {
+        border-bottom: solid 0.1em $llgray;
+        text-align: left;
+      }
+
+      span.tag {
+        display: inline-block;
+        margin: 0em 0.2em;
+
+        &:first-child {
+          margin-left: 0em;
+        }
+      }
+    }
+
+    > div.comments {
+      margin: 0 1em;
+      text-align: left;
+    }
+  }
+
+  section.list-container {
+    > ul.md-list {
+      padding-bottom: 0;
+    }
+
+    > p {
+      margin: 1em;
+      font-size: 100%;
+    }
+  }
+
+  section.book-styling {
+    text-align: right;
+    padding: 0.5em 1em;
+    display: table;
+    margin: auto;
+
+    > div {
+      display: table-row;
+
+      > span {
+        display: table-cell;
+        min-width: 10em;
+        text-align: left;
+        vertical-align: middle;
+
+        > i.md-icon {
+          vertical-align: middle;
+          margin-right: 0.2em;
+        }
+      }
+
+      > button {
+        display: table-cell;
+      }
+    }
+  }
+
+  div.filters {
+    width: calc(100% - 5em);
+    margin: 1em auto;
+  }
+
+  section.book-content-search {
+    text-align: left;
+
+    > div.search {
+      display: flex;
+
+      > button {
+        margin: 0.2em;
+      }
+    }
+
+    > ul.matches {
+      list-style: none;
+      padding: 0;
+      margin: 0.5em;
+
+      > li.match {
+        border-bottom: solid $md-grey-200;
+        padding: 0.5em 0;
+        cursor: pointer;
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        &:hover {
+          background-color: $md-grey-50;
+        }
+
+        > span.match {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
+
+div.reader-drawer-overlay,
+div.xyfir-annotate-react.drawer-overlay {
+  z-index: 0;
+}
