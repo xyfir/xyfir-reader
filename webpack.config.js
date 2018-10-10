@@ -1,5 +1,6 @@
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
-const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CONFIG = require('./constants/config');
 const path = require('path');
 
@@ -11,7 +12,8 @@ module.exports = {
   entry: './components/App.jsx',
 
   output: {
-    filename: 'App.js',
+    publicPath: '/dist/',
+    filename: PROD ? '[name].[hash].js' : '[name].js',
     path: path.resolve(__dirname, 'dist')
   },
 
@@ -40,27 +42,61 @@ module.exports = {
               {
                 targets: {
                   browsers: [
+                    'last 1 iOS version',
                     'last 2 Chrome versions',
-                    'last 2 Firefox versions',
-                    'last 2 iOS versions',
-                    'last 2 Android versions'
+                    'last 1 Android version',
+                    'last 1 Firefox version'
                   ]
                 }
               }
             ],
             '@babel/preset-react'
+          ],
+          plugins: [
+            '@babel/plugin-proposal-class-properties',
+            '@babel/plugin-syntax-dynamic-import'
           ]
         }
+      },
+      {
+        test: /\.s?css$/,
+        use: [
+          PROD ? MiniCssExtractPlugin.loader : 'style-loader',
+          'css-loader',
+          {
+            loader: 'sass-loader',
+            options: { outputStyle: PROD ? 'compressed' : 'expanded' }
+          }
+        ]
+      },
+      {
+        test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: { publicPath: '/dist' }
+          }
+        ]
       }
     ]
   },
 
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify(CONFIG.ENVIRONMENT)
-      }
+    PROD
+      ? new MiniCssExtractPlugin({
+          filename: '[name].[hash].css',
+          chunkFilename: '[id].[hash].css'
+        })
+      : null,
+    new HtmlWebpackPlugin({
+      minify: PROD,
+      template: 'template.html'
     }),
     PROD ? new CompressionPlugin({ filename: '[path].gz' }) : null
-  ].filter(p => p !== null)
+  ].filter(p => p !== null),
+
+  watchOptions: {
+    aggregateTimeout: 500,
+    ignored: ['node_modules', 'dist']
+  }
 };

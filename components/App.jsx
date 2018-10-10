@@ -1,3 +1,5 @@
+import 'styles/app.scss';
+
 import localForage from 'localforage';
 import { render } from 'react-dom';
 import request from 'superagent';
