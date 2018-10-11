@@ -180,7 +180,7 @@ export default class AppNavigation extends React.Component {
               iconChildren="home"
             />
           ]}
-          title="xyBooks"
+          title="xyReader"
           nav={
             <Button
               icon
