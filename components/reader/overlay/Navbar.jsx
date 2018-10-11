@@ -1,9 +1,6 @@
 import { ListItem, Toolbar, Button, Drawer, FontIcon } from 'react-md';
 import React from 'react';
 
-// Constants
-import { XYLIBRARY_URL } from 'constants/config';
-
 export default class ReaderNavbar extends React.Component {
   constructor(props) {
     super(props);
@@ -30,33 +27,16 @@ export default class ReaderNavbar extends React.Component {
     }
   }
 
-  /**
-   * Create or remove a bookmark.
-   */
+  /** Create or remove a bookmark. */
   onBookmark() {
     const { Reader } = this.props;
-    const { App } = Reader.props;
     const { cfi } = Reader.book.rendition.location.start;
 
-    let bookmarks = [];
-
-    // Remove bookmark
-    if (this._isBookmarked()) {
-      bookmarks = Reader.state.book.bookmarks.filter(b => cfi != b.cfi);
-    }
-    // Add bookmark
-    else {
-      bookmarks = Reader.state.book.bookmarks.concat([
-        {
-          cfi,
-          created: Date.now()
-        }
-      ]);
-    }
-
-    Reader._updateBook({ bookmarks });
-
-    // ** save bookmarks
+    Reader._updateBook({
+      bookmarks: this._isBookmarked()
+        ? Reader.state.book.bookmarks.filter(b => cfi != b.cfi)
+        : Reader.state.book.bookmarks.concat([{ cfi, created: Date.now() }])
+    });
   }
 
   /**
