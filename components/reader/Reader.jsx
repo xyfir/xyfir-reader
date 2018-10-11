@@ -143,7 +143,7 @@ export default class Reader extends React.Component {
 
         return updateAnnotations(
           this.state.book.annotations,
-          App.state.account.xyAnnotationsKey
+          App.state.config.reader.xyAnnotationsKey
         );
       })
       .then(annotations => {

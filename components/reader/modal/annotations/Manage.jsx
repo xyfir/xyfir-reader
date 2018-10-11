@@ -26,7 +26,7 @@ export default class ManageAnnotations extends React.Component {
     const { App } = Reader.props;
 
     this.state = {
-      key: App.state.account.xyAnnotationsKey,
+      key: App.state.config.reader.xyAnnotationsKey,
       sets: [],
       set: 0,
       tab: 0
@@ -180,7 +180,7 @@ export default class ManageAnnotations extends React.Component {
         <p>
           <strong>Note:</strong> You have not set a{' '}
           <OpenWindow href="https://annotations.xyfir.com/">
-            Xyfir Annotations
+            xyAnnotations
           </OpenWindow>{' '}
           subscription key. If you have a key, you can set it in your{' '}
           <a href="#/settings/reader">reader settings</a>.

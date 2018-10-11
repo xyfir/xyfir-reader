@@ -27,6 +27,7 @@ export default {
       fontFamily: 'Serif',
       textIndent: 2,
       textAlign: 'Justify',
+      xyAnnotationsKey: '',
       defaultHighlightMode: 'none'
     })
   },
