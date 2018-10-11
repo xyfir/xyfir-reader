@@ -243,9 +243,9 @@ export default class TableList extends React.Component {
           <span className="field title">{book.title}</span>
 
           <a
-            className="field authors"
+            className="field creator"
             href={
-              `#/books/list/all?search=1&authors=` +
+              `#/books/list/all?search=1&creator=` +
               encodeURIComponent(book.creator)
             }
           >

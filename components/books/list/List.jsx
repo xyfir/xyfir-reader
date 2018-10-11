@@ -8,7 +8,7 @@ export default props => {
   const view = props.App.state.view.split('/')[2];
 
   switch (view) {
-    case 'AUTHORS':
+    case 'CREATOR':
       return <SubGroups {...props} group="creator" />;
     default:
       return <All {...props} />;

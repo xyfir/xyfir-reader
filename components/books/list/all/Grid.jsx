@@ -60,10 +60,10 @@ export default class GridList extends React.Component {
                   </Button>
                   <Button
                     flat
-                    onClick={() => (location.hash = buildUrl(b, 'authors'))}
+                    onClick={() => (location.hash = buildUrl(b, 'creator'))}
                     iconChildren="person"
                   >
-                    Search author(s)
+                    Search creator(s)
                   </Button>
                   <Button
                     flat
@@ -78,7 +78,7 @@ export default class GridList extends React.Component {
               <img className="cover" id={`cover-${b.id}`} />
 
               <span className="title">{b.title}</span>
-              <span className="authors">{b.creator}</span>
+              <span className="creator">{b.creator}</span>
             </li>
           ))}
         </ul>

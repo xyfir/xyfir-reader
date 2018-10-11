@@ -36,7 +36,7 @@ ul.recently-opened.books {
       text-align: left;
 
       > a.title,
-      > a.authors {
+      > a.creator {
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
@@ -99,7 +99,7 @@ ul.list-compact {
       }
 
       > span.title,
-      > span.authors {
+      > span.creator {
         display: block;
         overflow: hidden;
         white-space: nowrap;
@@ -137,7 +137,7 @@ ul.list-grid {
       font-weight: bold;
     }
 
-    > span.authors,
+    > span.creator,
     > span.title {
       display: block;
       overflow: hidden;

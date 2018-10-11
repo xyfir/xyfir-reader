@@ -158,7 +158,7 @@ export default class ManageAnnotations extends React.Component {
             {set.media.books.map(b => (
               <li className="book" key={b.id}>
                 <span className="title">{b.title}</span> by{' '}
-                <span className="authors">{b.creator}</span>
+                <span className="creator">{b.creator}</span>
               </li>
             ))}
           </ul>
@@ -211,7 +211,7 @@ export default class ManageAnnotations extends React.Component {
                   <span className="book">
                     Linked to{' '}
                     <span className="title">{s.media.books[0].title}</span> by{' '}
-                    <span className="authors">{s.media.books[0].creator}</span>
+                    <span className="creator">{s.media.books[0].creator}</span>
                     {s.media.books.length > 1
                       ? ` and ${s.media.books.length - 1} more`
                       : ''}

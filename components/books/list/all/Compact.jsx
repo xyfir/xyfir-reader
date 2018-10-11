@@ -60,7 +60,7 @@ export default class CompactList extends React.Component {
 
               <div className="info">
                 <span className="title">{b.title}</span>
-                <span className="authors">{b.creator}</span>
+                <span className="creator">{b.creator}</span>
 
                 <div className="chips">
                   <span className="chip percent-complete">{b.percent}%</span>
@@ -88,9 +88,9 @@ export default class CompactList extends React.Component {
                       onClick={e => this.onListItemClick(e, b, 'read')}
                     />,
                     <ListItem
-                      primaryText="Search author(s)"
+                      primaryText="Search creator(s)"
                       leftIcon={<FontIcon>person</FontIcon>}
-                      onClick={e => this.onListItemClick(e, b, 'authors')}
+                      onClick={e => this.onListItemClick(e, b, 'creator')}
                     />,
                     <ListItem
                       primaryText="Count words"

@@ -24,7 +24,7 @@ export default class BookInfo extends React.Component {
             </tr>
 
             <tr>
-              <th>Authors</th>
+              <th>Creator(s)</th>
               <td>{book.creator}</td>
             </tr>
 

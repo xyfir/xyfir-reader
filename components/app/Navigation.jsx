@@ -3,7 +3,7 @@ import React from 'react';
 
 // Constants
 import { READ_BOOK } from 'constants/views';
-import { XYBOOKS_URL, XYDOCUMENTATION_URL } from 'constants/config';
+import { XYDOCUMENTATION_URL } from 'constants/config';
 
 // Components
 import OpenWindow from 'components/misc/OpenWindow';
@@ -44,7 +44,7 @@ export default class AppNavigation extends React.Component {
     const { App } = this.props;
 
     return (
-      Array('All', 'Authors')
+      Array('All', 'Creator')
         // Convert to array of objects
         // Count unique instances within each list group
         .map((_group, i) => {
@@ -66,10 +66,8 @@ export default class AppNavigation extends React.Component {
             if (group.arr.indexOf(value) == -1) group.arr.push(value);
           });
 
-          (group.length = group.arr.length), delete group.arr;
-
-          // authors -> author-sort
-          if (i == 1) group.property = 'author-sort';
+          group.length = group.arr.length;
+          delete group.arr;
 
           return group;
         })

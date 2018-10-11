@@ -9,7 +9,7 @@ export default class BookListSettings extends React.Component {
   constructor(props) {
     super(props);
 
-    this.columns = ['Title', 'Authors', 'Added', 'Published', 'Publisher'];
+    this.columns = ['Title', 'Creators', 'Added', 'Published', 'Publisher'];
   }
 
   onSaveTable() {

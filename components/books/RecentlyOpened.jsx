@@ -39,8 +39,8 @@ export default class RecentlyOpened extends React.Component {
                   </a>
 
                   <a
-                    className="authors"
-                    href={`#/books/list/all?search=1&authors=${encodeURIComponent(
+                    className="creator"
+                    href={`#/books/list/all?search=1&creator=${encodeURIComponent(
                       b.creator
                     )}`}
                   >
