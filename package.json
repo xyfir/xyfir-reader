@@ -27,8 +27,7 @@
     "react-dom": "^16.5.2",
     "react-hot-loader": "^4.3.11",
     "react-md": "^1.7.1",
-    "superagent": "^4.0.0-beta.5",
-    "sweetalert": "^2.1.0"
+    "superagent": "^4.0.0-beta.5"
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",
