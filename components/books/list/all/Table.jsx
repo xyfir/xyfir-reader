@@ -155,21 +155,7 @@ export default class TableList extends React.Component {
             case 'added':
               return (
                 <TableColumn className="added" key={col}>
-                  {moment(book.timestamp).format('YYYY-MM-DD')}
-                </TableColumn>
-              );
-
-            case 'rating':
-              return (
-                <TableColumn className="rating" key={col}>
-                  {book.rating !== undefined ? (
-                    <React.Fragment>
-                      {book.rating}
-                      <FontIcon>stars</FontIcon>
-                    </React.Fragment>
-                  ) : (
-                    'None'
-                  )}
+                  {moment(book.id).format('YYYY-MM-DD')}
                 </TableColumn>
               );
 
@@ -177,13 +163,6 @@ export default class TableList extends React.Component {
               return (
                 <TableColumn className="published" key={col}>
                   {moment(book.pubdate).format('YYYY-MM-DD')}
-                </TableColumn>
-              );
-
-            case 'series':
-              return (
-                <TableColumn className="series" key={col}>
-                  {!book.series ? '' : `${book.series} [${book.series_index}]`}
                 </TableColumn>
               );
 
@@ -258,15 +237,8 @@ export default class TableList extends React.Component {
             ) : null}
 
             <span className="chip date-added">
-              {moment(book.timestamp).format('YYYY-MM-DD')}
+              {moment(book.id).format('YYYY-MM-DD')}
             </span>
-
-            {!!+book.rating ? (
-              <span className="chip rating">
-                <span>{book.rating}</span>
-                <FontIcon>stars</FontIcon>
-              </span>
-            ) : null}
           </div>
 
           <Divider />
@@ -277,25 +249,11 @@ export default class TableList extends React.Component {
             className="field authors"
             href={
               `#/books/list/all?search=1&authors=` +
-              encodeURIComponent(book.authors)
+              encodeURIComponent(book.creator)
             }
           >
-            {book.authors}
+            {book.creator}
           </a>
-
-          {book.series ? (
-            <span className="field series">
-              <span>#{book.series_index} of </span>
-              <a
-                href={
-                  `#/books/list/all?search=1&series=` +
-                  encodeURIComponent(book.series)
-                }
-              >
-                {book.series}
-              </a>
-            </span>
-          ) : null}
 
           <span className="field published">
             Published on{' '}
@@ -372,27 +330,11 @@ export default class TableList extends React.Component {
             </span>
           </span>
 
-          <span className="field">
-            <span className="name">Tags</span>
-            <span className="links">
-              {book.tags.map(tag => (
-                <a
-                  href={`#/books/list/all?search=1&tag=${encodeURIComponent(
-                    tag
-                  )}`}
-                  key={tag}
-                >
-                  {tag}
-                </a>
-              ))}
-            </span>
-          </span>
-
           <Divider />
 
           <div
-            className="comments"
-            dangerouslySetInnerHTML={{ __html: book.comments }}
+            className="description"
+            dangerouslySetInnerHTML={{ __html: book.description }}
           />
         </div>
       </section>

@@ -21,27 +21,10 @@ export default class BookListSubGroups extends React.Component {
     };
 
     this.props.data.books.forEach(book => {
-      if (this.props.group == 'ratings') {
-        const rating =
-          book.rating === undefined
-            ? 'Unrated'
-            : book.rating === 0
-              ? 'No Stars'
-              : Math.floor(book.rating) + ' Stars';
-
-        if (subgroups[rating] === undefined) subgroups[rating] = 1;
-        else subgroups[rating]++;
-      } else if (this.props.group == 'tags') {
-        book.tags.forEach(tag => {
-          if (subgroups[tag] === undefined) subgroups[tag] = 1;
-          else subgroups[tag]++;
-        });
-      } else {
-        if (book[this.props.group] === undefined) return;
-        if (subgroups[book[this.props.group]] === undefined)
-          subgroups[book[this.props.group]] = 1;
-        else subgroups[book[this.props.group]]++;
-      }
+      if (book[this.props.group] === undefined) return;
+      if (subgroups[book[this.props.group]] === undefined)
+        subgroups[book[this.props.group]] = 1;
+      else subgroups[book[this.props.group]]++;
     });
 
     return (

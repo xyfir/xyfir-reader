@@ -44,7 +44,7 @@ export default class AppNavigation extends React.Component {
     const { App } = this.props;
 
     return (
-      Array('All', 'Authors', 'Ratings', 'Series', 'Tags')
+      Array('All', 'Authors')
         // Convert to array of objects
         // Count unique instances within each list group
         .map((_group, i) => {
@@ -62,29 +62,7 @@ export default class AppNavigation extends React.Component {
           }
 
           App.state.books.forEach(book => {
-            // Tags group
-            if (group.property == 'tags') {
-              return App.state.books.forEach(book =>
-                book.tags.forEach(tag => {
-                  if (group.arr.indexOf(tag) == -1) group.arr.push(tag);
-                })
-              );
-            }
-
-            const value = (() => {
-              switch (group.property) {
-                case 'rating':
-                  return book.rating === undefined
-                    ? 0
-                    : Math.floor(book.rating);
-                case 'series':
-                  if (!book.series) return;
-                  else return book.series;
-                default:
-                  return book[group.property];
-              }
-            })();
-
+            const value = book[group.property];
             if (group.arr.indexOf(value) == -1) group.arr.push(value);
           });
 

@@ -1,3 +1,4 @@
+import moment from 'moment';
 import React from 'react';
 
 // Components
@@ -24,7 +25,7 @@ export default class BookInfo extends React.Component {
 
             <tr>
               <th>Authors</th>
-              <td>{book.authors}</td>
+              <td>{book.creator}</td>
             </tr>
 
             <tr>
@@ -39,26 +40,14 @@ export default class BookInfo extends React.Component {
 
             <tr>
               <th>Added</th>
-              <td>{book.timestamp.split('T')[0]}</td>
-            </tr>
-
-            <tr>
-              <th>Tags</th>
-              <td>
-                {book.tags.map(tag => <span className="tag">{tag}</span>)}
-              </td>
-            </tr>
-
-            <tr>
-              <th>Series</th>
-              <td>{book.series}</td>
+              <td>{moment(book.id).format('YYYY-MM-DD')}</td>
             </tr>
           </tbody>
         </table>
 
         <div
-          className="comments"
-          dangerouslySetInnerHTML={{ __html: book.comments }}
+          className="description"
+          dangerouslySetInnerHTML={{ __html: book.descriptions }}
         />
       </section>
     );

@@ -14,7 +14,7 @@ export default {
     bookList: {
       view: 'compact',
       table: {
-        columns: ['title', 'authors', 'series', 'added', 'rating'],
+        columns: ['title', 'authors', 'added'],
         defaultSort: {
           column: 'title',
           asc: true

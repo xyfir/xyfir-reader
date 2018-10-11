@@ -41,10 +41,10 @@ export default class RecentlyOpened extends React.Component {
                   <a
                     className="authors"
                     href={`#/books/list/all?search=1&authors=${encodeURIComponent(
-                      b.authors
+                      b.creator
                     )}`}
                   >
-                    {b.authors}
+                    {b.creator}
                   </a>
 
                   <div className="chips">
@@ -53,13 +53,6 @@ export default class RecentlyOpened extends React.Component {
                     {b.words > 0 ? (
                       <span className="chip word-count">
                         {Math.round(b.words / 1000)}K
-                      </span>
-                    ) : null}
-
-                    {!!+b.rating ? (
-                      <span className="chip rating">
-                        <span>{b.rating}</span>
-                        <FontIcon>stars</FontIcon>
                       </span>
                     ) : null}
                   </div>

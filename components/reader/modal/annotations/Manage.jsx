@@ -39,7 +39,7 @@ export default class ManageAnnotations extends React.Component {
         bookTitle: Reader.state.book.title,
         direction: 'desc',
         bookSeries: '',
-        bookAuthors: Reader.state.book.authors
+        bookAuthors: Reader.state.book.creator
       })
       .end((err, res) => !err && this.setState(res.body));
   }
@@ -158,7 +158,7 @@ export default class ManageAnnotations extends React.Component {
             {set.media.books.map(b => (
               <li className="book" key={b.id}>
                 <span className="title">{b.title}</span> by{' '}
-                <span className="authors">{b.authors}</span>
+                <span className="authors">{b.creator}</span>
               </li>
             ))}
           </ul>
@@ -211,7 +211,7 @@ export default class ManageAnnotations extends React.Component {
                   <span className="book">
                     Linked to{' '}
                     <span className="title">{s.media.books[0].title}</span> by{' '}
-                    <span className="authors">{s.media.books[0].authors}</span>
+                    <span className="authors">{s.media.books[0].creator}</span>
                     {s.media.books.length > 1
                       ? ` and ${s.media.books.length - 1} more`
                       : ''}

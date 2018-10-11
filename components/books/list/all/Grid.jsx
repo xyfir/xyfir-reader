@@ -78,7 +78,7 @@ export default class GridList extends React.Component {
               <img className="cover" id={`cover-${b.id}`} />
 
               <span className="title">{b.title}</span>
-              <span className="authors">{b.authors}</span>
+              <span className="authors">{b.creator}</span>
             </li>
           ))}
         </ul>
