@@ -168,16 +168,6 @@ div.book-list.table {
     margin-left: 1em;
     width: calc(80% - 1em);
     float: left;
-
-    td.rating {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      > i.md-icon {
-        margin-left: 0.1em;
-      }
-    }
   }
 
   > section.selected-book {

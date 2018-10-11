@@ -17,11 +17,6 @@ body.theme-dark {
     background-color: #252526;
   }
 
-  .edit-books div.comments,
-  .manage-book div.comments {
-    background-color: #3f3f46;
-  }
-
   span.reader-dialog.container {
     section.book-content-search > ul.matches > li.match:hover {
       background-color: $md-grey-700;
