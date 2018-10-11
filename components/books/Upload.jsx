@@ -1,28 +1,36 @@
-import { Button } from 'react-md';
-import Dropzone from 'react-dropzone';
+import { FileUpload } from 'react-md';
+import { loadBooks } from 'actions/books';
 import React from 'react';
+import EPUB from 'epubjs';
 
 export default class UploadBooks extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = { uploading: false };
   }
 
-  /**
-   * Validate and attempt to upload books.
-   * @param {File[]} files
-   */
-  onUpload(files) {
+  /** @param {File} file */
+  async onUpload(file) {
     const { App } = this.props;
 
     try {
-      if (this.state.uploading) return;
-      else this.setState({ uploading: true });
+      const id = Date.now();
+      await localforage.setItem(`epub-${id}`, file);
 
-      this.setState({ uploading: false });
+      // Extract cover and metadata
+      const books = this.props.App.state.books;
+      const book = new EPUB(file, {});
+      await book.ready;
+
+      window.book = book;
+      await localforage.setItem(
+        `cover-${id}`,
+        await book.archive.zip.files[book.package.coverPath].async('blob')
+      );
+      books.push(book.package.metadata);
+      await localforage.setItem('books', books);
+      this.props.App.dispatch(loadBooks(books));
+
       App._alert('Book(s) uploaded successfully');
-      // ** save book
     } catch (err) {
       App._alert(err.toString());
       this.setState({ uploading: false });
@@ -31,35 +39,18 @@ export default class UploadBooks extends React.Component {
 
   render() {
     return (
-      <Dropzone
-        ref={i => (this._dropzone = i)}
-        onDrop={f => this.onUpload(f)}
-        disabled={this.state.uploading}
-        className="dropzone upload-books"
-        disableClick={true}
-      >
-        <p className="status">
-          {this.state.uploading
-            ? 'Uploading file(s), please wait...'
-            : 'Drag and drop ebooks or use button to select files for upload'}
-        </p>
+      <section className="upload-books">
+        <p>Only EPUB books are supported.</p>
 
-        <p>
-          Upload ebooks to your library. Metadata (title, authors, etc) will
-          automatically be extracted from the ebook files. Each book's metadata
-          can be viewed and modified after upload.
-        </p>
-        <p>Only EPUB books can be read.</p>
-
-        <Button
+        <FileUpload
           primary
           raised
-          iconChildren="file_upload"
-          onClick={() => this._dropzone.open()}
-        >
-          Select Files
-        </Button>
-      </Dropzone>
+          id="file-upload"
+          name="file-upload"
+          label="Select Book"
+          onLoad={f => this.onUpload(f)}
+        />
+      </section>
     );
   }
 }
