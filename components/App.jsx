@@ -84,6 +84,10 @@ class App extends React.Component {
     return store.dispatch(action);
   }
 
+  get store() {
+    return store;
+  }
+
   render() {
     if (!this.state || this.state.loading) return <Loading />;
 
