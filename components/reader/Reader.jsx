@@ -159,9 +159,7 @@ export default class Reader extends React.Component {
       .catch(err => !console.error(err) && history.back());
   }
 
-  /**
-   * Update book's percent complete and last read time. Clean up.
-   */
+  /** Update book's percent complete and last read time. Clean up. */
   componentWillUnmount() {
     document.querySelector('body>main').id = 'content';
 
@@ -170,15 +168,17 @@ export default class Reader extends React.Component {
     this.book.destroy();
     window._book = this.book = undefined;
 
-    const data = {
-      percent: this.state.percent,
-      last_read: Date.now()
-    };
-
     const { App } = this.props;
-    App.store.dispatch(updateBook(this.state.book.id, data));
+    const { id } = this.state.book;
+
+    App.store.dispatch(
+      updateBook(id, {
+        percent: this.state.percent,
+        last_read: Date.now()
+      })
+    );
     App.store.dispatch(save('books'));
-    localforage.removeItem(`search-${this.state.book.id}`);
+    localforage.removeItem(`search-${id}`);
   }
 
   /**
@@ -222,7 +222,7 @@ export default class Reader extends React.Component {
         }
       })();
 
-    (highlight.message = (() => {
+    highlight.message = (() => {
       switch (highlight.mode) {
         case 'none':
           return 'Highlights turned off';
@@ -234,8 +234,8 @@ export default class Reader extends React.Component {
             this.state.book.annotations[highlight.index].title
           );
       }
-    })()),
-      (highlight.previousMode = this.state.highlight.mode);
+    })();
+    highlight.previousMode = this.state.highlight.mode;
 
     this._applyHighlights(highlight);
     this.setState({ highlight });
