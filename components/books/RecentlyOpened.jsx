@@ -4,7 +4,6 @@ import React from 'react';
 // Modules
 import loadCovers from 'lib/books/load-covers';
 import sortBooks from 'lib/books/sort';
-import toUrl from 'lib/url/clean';
 
 export default class RecentlyOpened extends React.Component {
   constructor(props) {
@@ -28,16 +27,14 @@ export default class RecentlyOpened extends React.Component {
           .slice(-4)
           .reverse()
           .map(b => {
-            const url = `/${b.id}/${toUrl(b.authors)}/${toUrl(b.title)}`;
-
             return (
               <li className="book" key={b.id}>
-                <a href={`#/books/read${url}`}>
+                <a href={`#/books/read/${b.id}`}>
                   <img className="cover" id={`cover-${b.id}`} />
                 </a>
 
                 <div className="info">
-                  <a className="title" href={`#/books/read${url}`}>
+                  <a className="title" href={`#/books/read/${b.id}`}>
                     {b.title}
                   </a>
 

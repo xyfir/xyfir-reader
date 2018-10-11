@@ -21,7 +21,6 @@ import findMatches from 'lib/books/find-matching';
 import loadCovers from 'lib/books/load-covers';
 import countWords from 'lib/books/count-words';
 import sortBooks from 'lib/books/sort';
-import toUrl from 'lib/url/clean';
 import rand from 'lib/random/number';
 
 // Constants
@@ -209,8 +208,7 @@ export default class TableList extends React.Component {
 
     if (!book) return null;
 
-    (book.url = `${book.id}/${toUrl(book.authors)}/${toUrl(book.title)}`),
-      (book.identifiers = book.identifiers || {});
+    book.identifiers = book.identifiers || {};
 
     return (
       <section className="selected-book">
@@ -224,7 +222,7 @@ export default class TableList extends React.Component {
               tooltipPosition="bottom"
               tooltipLabel="Read book"
               iconChildren="remove_red_eye"
-              onClick={() => (location.hash = `#/books/read/${book.url}`)}
+              onClick={() => (location.hash = `#/books/read/${book.id}`)}
             />
           ) : null}
 
