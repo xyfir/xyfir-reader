@@ -26,7 +26,7 @@ export default class UploadBooks extends React.Component {
         `cover-${id}`,
         await book.archive.zip.files[book.package.coverPath].async('blob')
       );
-      books.push(book.package.metadata);
+      books.push(Object.assign({}, book.package.metadata, { id }));
       await localforage.setItem('books', books);
       this.props.App.dispatch(loadBooks(books));
 
