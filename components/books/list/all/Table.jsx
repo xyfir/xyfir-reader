@@ -184,10 +184,7 @@ export default class TableList extends React.Component {
     const { App } = this.props;
     const { books } = App.state;
     const book = books.find(b => b.id == selected[selected.length - 1]);
-
     if (!book) return null;
-
-    book.identifiers = book.identifiers || {};
 
     return (
       <section className="selected-book">
@@ -274,59 +271,6 @@ export default class TableList extends React.Component {
               ) : (
                 'N/A'
               )}
-            </span>
-          </span>
-
-          <Divider />
-
-          <span className="field identifiers">
-            <span className="name">Identifiers</span>
-            <span className="links">
-              {Object.keys(book.identifiers)
-                .map(type => {
-                  const id = [type, book.identifiers[type]];
-
-                  switch (id[0]) {
-                    case 'isbn':
-                      return {
-                        link: `http://www.abebooks.com/book-search/isbn/${
-                          id[1]
-                        }`,
-                        title: 'ISBN'
-                      };
-                    case 'goodreads':
-                      return {
-                        link: `http://www.goodreads.com/book/show/${id[1]}`,
-                        title: 'GoodReads'
-                      };
-                    case 'mobi-asin':
-                    case 'amazon':
-                      return {
-                        link: `http://www.amazon.com/dp/${id[1]}`,
-                        title: 'Amazon'
-                      };
-                    case 'google':
-                      return {
-                        link: `https://books.google.com/books/about/?id=${
-                          id[1]
-                        }`,
-                        title: 'Google Books'
-                      };
-                    case 'barnesnoble':
-                      return {
-                        link: `http://www.barnesandnoble.com/${id[1]}`,
-                        title: 'Barnes & Noble'
-                      };
-                    default:
-                      return null;
-                  }
-                })
-                .filter(id => id != null)
-                .map((id, i) => (
-                  <OpenWindow href={id.link} key={i}>
-                    {id.title}
-                  </OpenWindow>
-                ))}
             </span>
           </span>
 
