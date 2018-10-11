@@ -1,5 +1,4 @@
 import * as AnnotateEPUBJS from '@xyfir/annotate-epubjs';
-import request from 'superagent';
 import EPUB from 'epubjs';
 import React from 'react';
 
