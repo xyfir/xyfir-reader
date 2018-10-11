@@ -1,5 +1,4 @@
 import {
-  FontIcon,
   Button,
   Divider,
   DataTable,
@@ -13,7 +12,6 @@ import React from 'react';
 
 // Components
 import Pagination from 'components/misc/Pagination';
-import OpenWindow from 'components/misc/OpenWindow';
 
 // Modules
 import deleteBooks from 'lib/books/delete';
@@ -22,9 +20,6 @@ import loadCovers from 'lib/books/load-covers';
 import countWords from 'lib/books/count-words';
 import sortBooks from 'lib/books/sort';
 import rand from 'lib/random/number';
-
-// Constants
-import { XYLIBRARY_URL } from 'constants/config';
 
 export default class TableList extends React.Component {
   constructor(props) {

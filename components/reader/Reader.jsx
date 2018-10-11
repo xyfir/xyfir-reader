@@ -18,9 +18,6 @@ import openWindow from 'lib/util/open-window';
 import hexToRGBA from 'lib/util/hex-to-rgba';
 import loadBook from 'lib/books/load';
 
-// Constants
-import { XYLIBRARY_URL } from 'constants/config';
-
 // Action creators
 import { updateBook } from 'actions/books';
 import { save } from 'actions/app';
