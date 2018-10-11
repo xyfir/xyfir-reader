@@ -39,28 +39,6 @@ a {
   justify-content: center;
 }
 
-div.dropzone {
-  width: 90%;
-  margin: auto;
-  border: $md-grey-600 dotted 0.15em;
-  padding: 0.5em;
-  border-radius: 0.5em;
-  background-color: white;
-
-  &:hover {
-    background-color: $md-grey-50;
-  }
-
-  > p.status {
-    font-size: 100%;
-    font-weight: bold;
-  }
-
-  > button {
-    margin: 0;
-  }
-}
-
 div.loading {
   justify-content: center;
   align-items: center;

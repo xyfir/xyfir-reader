@@ -25,7 +25,6 @@
     "moment": "^2.22.2",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
-    "react-dropzone": "^6.0.3",
     "react-hot-loader": "^4.3.11",
     "react-md": "^1.7.1",
     "superagent": "^4.0.0-beta.5",
