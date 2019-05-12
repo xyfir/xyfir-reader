@@ -3,7 +3,6 @@ import React from 'react';
 
 // Constants
 import { READ_BOOK } from 'constants/views';
-import { XYDOCUMENTATION_URL } from 'constants/config';
 
 // Components
 import OpenWindow from 'components/misc/OpenWindow';
@@ -127,31 +126,6 @@ export default class AppNavigation extends React.Component {
               primaryText="Book List"
             />
           </a>
-        ]}
-      />,
-
-      <ListItem
-        leftIcon={<FontIcon>info</FontIcon>}
-        primaryText="Documentation"
-        nestedItems={[
-          <OpenWindow href={`${XYDOCUMENTATION_URL}/xyfir-reader/help`}>
-            <ListItem
-              leftIcon={<FontIcon>help</FontIcon>}
-              primaryText="Help Docs"
-            />
-          </OpenWindow>,
-          <OpenWindow href={`${XYDOCUMENTATION_URL}/xyfir-reader/privacy`}>
-            <ListItem
-              leftIcon={<FontIcon>security</FontIcon>}
-              primaryText="Privacy Policy"
-            />
-          </OpenWindow>,
-          <OpenWindow href={`${XYDOCUMENTATION_URL}/xyfir-reader/tos`}>
-            <ListItem
-              leftIcon={<FontIcon>gavel</FontIcon>}
-              primaryText="Terms of Service"
-            />
-          </OpenWindow>
         ]}
       />
     ];
